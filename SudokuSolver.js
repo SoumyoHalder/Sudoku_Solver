@@ -118,9 +118,9 @@ function solve(board) {
       input.type = 'text';
       input.min = '1';
       input.max = '9';
-      input.style.width = '35px';
-      input.style.height = '35px';
-      input.style.fontSize = '24px';
+      input.style.width = '32px';
+      input.style.height = '32px';
+      input.style.fontSize = '22px';
       input.style.textAlign = 'center';
       input.style.border = 'none';
       input.style.borderRadius = '4px';
