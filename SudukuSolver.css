@@ -149,7 +149,7 @@
    */
   @media only screen and (max-width: 1560px) {
     .header_area img {
-        height: 7rem;
+        height: 6rem;
       }
       .sudoku_grid{
 
@@ -160,7 +160,7 @@
     .sudoku_grid div {
       font-size: 35px;
       width: 11%;
-    height: 3.5rem;
+    height: 3.25rem;
   }
   .Buttons button {
     font-size: 25px; 
@@ -176,14 +176,14 @@
       }
       .sudoku_grid{
 
-        width:54%;
+        width:50%;
         padding: 1rem;
         margin: 7px auto;
       }
     .sudoku_grid div {
       font-size: 20px;
       width: 11%;
-    height: 2.5rem;
+    height: 2.75rem;
   }
     
 
