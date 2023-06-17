@@ -176,14 +176,14 @@
       }
       .sudoku_grid{
 
-        width:60%;
+        width:54%;
         padding: 1rem;
         margin: 7px auto;
       }
     .sudoku_grid div {
       font-size: 20px;
       width: 11%;
-    height: 2.75rem;
+    height: 2.5rem;
   }
     
 
