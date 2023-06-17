@@ -6,7 +6,207 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soumyo's Sudoku_Solver</title>
     <link rel="shortcut icon" href="./icons8-sudoku-96.png" type="image/x-icon">
-    <link rel="stylesheet" href="SudukuSolver.css">
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    height: 100vh;
+    width: auto;
+    background: linear-gradient(to bottom right, #f4e3b2, #d0bc7c);
+
+  }
+  
+  
+  .header_area {
+    background-color: black;
+    padding: 0.5rem;
+  }
+  .heading{
+    display: flex;
+    justify-content: center;
+  }
+  .header_area img {
+    height: 7rem;
+  }
+.container{
+    width: 100%;
+}
+  .sudoku_grid {
+    display: flex;
+    flex-direction: row;
+    max-width: 578px;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    justify-content: center;
+  }
+  
+  .sudoku_grid div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    color: white;
+    font-size: 40px;
+    box-sizing: border-box;
+    border: 2px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .sudoku_grid div:hover {
+    background-color: #48aaaD;
+    color: black;
+  }
+  
+  .box1,
+  .box4,
+  .box7 {
+    background-color: #1E88E5;
+  }
+  
+  .box2,
+  .box5,
+  .box8 {
+    background-color: #C62828;
+  }
+  
+  .box3,
+  .box6,
+  .box9 {
+    background-color: #2E7D32;
+  }
+  
+  .bl {
+    border-left: 4px solid black;
+  }
+  
+  .bb {
+    border-bottom: 4px solid black;
+  }
+  
+  .br {
+    border-right: 4px solid black;
+  }
+  
+  .bt {
+    border-top: 4px solid black;
+  }
+  
+  .Buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 80px;
+  }
+  
+  .Buttons button {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #538fbe;
+    padding: 10px 35px;
+    font-size: 24px;
+    border-radius: 7px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-right: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .Buttons button:hover {
+    background-color: #3b6e9d;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+  
+  .Buttons button:active {
+    background-color: #2c5478;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transform: translateY(0);
+  }
+
+
+  
+  /* Media Queries */
+  
+  @media only screen and (max-width: 1500px) {
+    .header_area img {
+        height: 7rem;
+      }
+
+    .sudoku_grid div {
+      font-size: 20px;
+      width: 4rem;
+    height: 3rem;
+  }
+    
+
+    .Buttons button {
+      font-size: 15px; 
+      padding: 5px 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 960px) {
+    .header_area img {
+        height: 6rem;
+      }
+
+    .sudoku_grid div {
+      font-size: 20px;
+      width: 4rem;
+    height: 3rem;
+  }
+    
+
+    .Buttons button {
+      font-size: 15px; 
+      padding: 5px 10px;
+    }
+  }
+  @media only screen and (max-width: 577px) {
+    .header_area img {
+        height: 4rem;
+      }
+    .sudoku_grid div {
+      font-size: 20px;
+      max-width: 11%;
+      max-height: 3rem;
+  }
+    
+
+    .Buttons button {
+      font-size: 15px; 
+      padding: 5px 10px;
+    }
+  }
+
+  @media only screen and (max-width: 320px) {
+    .header_area img {
+        height: 3rem;
+      }
+    .sudoku_grid div {
+      font-size: 20px;
+      max-width: 10.1%;
+      max-height: 3rem;
+  }
+    
+
+    .Buttons button {
+      font-size: 15px; 
+      padding: 5px 10px;
+    }
+  }
+
+  
+
+
+    </style>
 </head>
 <body>
     <Section class="header_area">
@@ -109,6 +309,183 @@
         </div>
    </section>
     
-   <script src="SudokuSolver.js"></script>
+   <script>
+    var arr = [[]];
+var sudokuCopy = [[]];
+var solvedBoard = [[]];
+
+function initializeGrid() {
+  arr = [];
+  sudokuCopy = [];
+  for (var i = 0; i < 9; i++) {
+    var row = [];
+    var copyRow = [];
+    for (var j = 0; j < 9; j++) {
+      row.push(document.getElementById(i * 9 + j));
+      copyRow.push(0);
+    }
+    arr.push(row);
+    sudokuCopy.push(copyRow);
+  }
+}
+
+function fillBoard(board) {
+  for (var i = 0; i < 9; i++) {
+    for (var j = 0; j < 9; j++) {
+      if (board[i][j] !== 0) {
+        arr[i][j].innerText = board[i][j];
+      } else {
+        arr[i][j].innerText = '';
+      }
+    }
+  }
+}
+
+function isValid(board, num, r, c) {
+  for (let col = 0; col < 9; col++) {
+    if (board[r][col] == num) {
+      return false;
+    }
+  }
+
+  for (let row = 0; row < 9; row++) {
+    if (board[row][c] == num) {
+      return false;
+    }
+  }
+
+  let box_start_r = Math.floor(r / 3) * 3;
+  let box_start_c = Math.floor(c / 3) * 3;
+
+  for (let row = box_start_r; row < box_start_r + 3; row++) {
+    for (let col = box_start_c; col < box_start_c + 3; col++) {
+      if (board[row][col] == num) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}
+
+function solve(board) {
+  for (let row = 0; row < 9; row++) {
+    for (let col = 0; col < 9; col++) {
+      if (board[row][col] == 0) {
+        for (let num = 1; num <= 9; num++) {
+          if (isValid(board, num, row, col)) {
+            board[row][col] = num;
+
+            if (solve(board)) {
+              return true;
+            } else {
+              board[row][col] = 0;
+            }
+          }
+        }
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+
+  //GetPuzzle button
+  document.getElementById('GetPuzzle').addEventListener('click', function () {
+    var xhrRequest = new XMLHttpRequest();
+    xhrRequest.onload = function () {
+      var response = JSON.parse(xhrRequest.response);
+      console.log(response);
+      var board = response.board;
+      fillBoard(board);
+      // making a copy of the board
+      sudokuCopy = JSON.parse(JSON.stringify(board));
+    };
+    xhrRequest.open(
+      'GET',
+      'https://sugoku.onrender.com/board?difficulty=easy' //api to fetch the board from, lvl easy
+    );
+    xhrRequest.send();
+  });
+  
+  // initialize the grid after fetching the puzzle
+  initializeGrid();
+  
+  
+  //user inputs
+  const boxes = document.querySelectorAll('.sudoku_grid div');
+  
+  boxes.forEach((box, index) => {
+    const rowIndex = Math.floor(index / 9);
+    const colIndex = index % 9;
+  
+    box.addEventListener('click', () => {
+      //return if the box originally had non-zero element
+      if (sudokuCopy[rowIndex][colIndex] !== 0) {
+        return; 
+      }
+  
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.min = '1';
+      input.max = '9';
+      input.style.width = '35px';
+      input.style.height = '35px';
+      input.style.fontSize = '24px';
+      input.style.textAlign = 'center';
+      input.style.border = 'none';
+      input.style.borderRadius = '4px';
+      input.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.3)';
+      input.style.margin = '0';
+      input.style.padding = '0';
+      input.style.outline = 'none';
+  
+      const previousNumber = arr[rowIndex][colIndex].innerText;
+      input.value = previousNumber || '';
+  
+      box.innerHTML = '';
+      box.appendChild(input);
+  
+      input.focus();
+  
+      input.addEventListener('blur', () => {
+        const number = input.value.trim();
+        if (number && /^[1-9]$/.test(number)) { //check if the user input is valid 
+          box.textContent = number;
+        } else {
+          box.textContent = previousNumber || '';
+        }
+  
+        if (isBoardFilled()) {
+          if (isBoardCorrect()) {
+            displayResult('Great!', 'green');
+          } else {
+            displayResult('Wrong!', 'red');
+          }
+        }
+      });
+    });
+  });
+  
+  // Reset button to restore the original puzzle
+  document.getElementById('ResetPuzzle').addEventListener('click', function () {
+    var originalBoard = JSON.parse(JSON.stringify(sudokuCopy));
+    fillBoard(originalBoard);
+  });
+  
+  // SolvePuzzle button
+  document.getElementById('SolvePuzzle').addEventListener('click', function () {
+    var board = JSON.parse(JSON.stringify(sudokuCopy)); // Create a copy of the stored puzzle
+  
+    if (solve(board)) {  //call the solve board funtion
+      fillBoard(board);
+    } else {
+      console.log('No solution exists!');
+    }
+  });
+
+
+   </script>
 </body>
 </html>
