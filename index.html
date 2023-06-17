@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soumyo's Sudoku_Solver</title>
     <link rel="shortcut icon" href="./icons8-sudoku-96.png" type="image/x-icon">
-
-    <style>
-        * {
+<style>
+    * {
     margin: 0;
     padding: 0;
+    zoom: 90%;
   }
   body {
-    height: 100vh;
-    width: auto;
+    height: 100;
+    width:100% ;
     background: linear-gradient(to bottom right, #f4e3b2, #d0bc7c);
 
   }
@@ -31,13 +31,12 @@
   .header_area img {
     height: 7rem;
   }
-.container{
-    width: 100%;
-}
+
   .sudoku_grid {
+    padding: 1rem;
     display: flex;
     flex-direction: row;
-    max-width: 578px;
+    width:48% ;
     flex-wrap: wrap;
     margin: 10px auto;
     justify-content: center;
@@ -47,8 +46,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 11%;
+    height: 3.3rem;
     color: white;
     font-size: 40px;
     box-sizing: border-box;
@@ -100,7 +99,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin-bottom: 80px;
+    margin-bottom: 2.5rem;
   }
   
   .Buttons button {
@@ -109,12 +108,12 @@
     color: #fff;
     font-weight: bold;
     background-color: #538fbe;
-    padding: 10px 35px;
+    padding: 10px 30px;
     font-size: 24px;
     border-radius: 7px;
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    margin-right: 10px;
+    margin-right: 12px;
     transition: transform 0.3s, box-shadow 0.3s;
   }
   
@@ -132,20 +131,113 @@
 
 
   
+  /* Media Queries */
+  
+  @media only screen and (max-width: 2600px) {
+    .header_area img {
+        height: 13rem;
+      }
+      .sudoku_grid{
+
+        width: 60%;
+        padding: 3rem;
+        margin: 7px auto;
+      }
+    .sudoku_grid div {
+      font-size: 60px;
+      width: 11%;
+    height: 7rem;
+  }
+  .Buttons button {
+    font-size: 50px; 
+    padding: 7px 10px;
+  }
+
+}
+  
+  @media only screen and (max-width: 1560px) {
+    .header_area img {
+        height: 7rem;
+      }
+      .sudoku_grid{
+
+        width:54%;
+        padding: 1.5rem;
+        margin: 7px auto;
+      }
+    .sudoku_grid div {
+      font-size: 35px;
+      width: 11%;
+    height: 3.5rem;
+  }
+  .Buttons button {
+    font-size: 25px; 
+    padding: 7px 10px;
+  }
+
+
+}
+    
+  @media only screen and (max-width: 1260px) {
+    .header_area img {
+        height: 7rem;
+      }
+      .sudoku_grid{
+
+        width:60%;
+        padding: 1rem;
+        margin: 7px auto;
+      }
+    .sudoku_grid div {
+      font-size: 20px;
+      width: 11%;
+    height: 3rem;
+  }
+    
+
+    .Buttons button {
+      font-size: 20px; 
+      padding: 7px 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 960px) {
+    .header_area img {
+        height: 4.5rem;
+      }
+      .sudoku_grid{
+
+        width:60%;
+        padding: .15rem;
+        margin: 7px auto;
+      }
+    .sudoku_grid div {
+      font-size: 20px;
+      width: 11%;
+      height: 2.3rem;
+  }
+    
 
     .Buttons button {
       font-size: 15px; 
       padding: 5px 10px;
+      margin-top: .25rem;
+      margin-bottom: 0;
     }
   }
-
-  @media only screen and (max-width: 320px) {
+   
+  @media only screen and (max-width: 577px) {
     .header_area img {
-        height: 3rem;
+        height: 4rem;
+      }
+      .sudoku_grid{
+        width:75%;
+        /* padding: .15rem;
+        margin: 5px auto; */
       }
     .sudoku_grid div {
       font-size: 20px;
-      max-width: 10.1%;
+      max-width: 11%;
       max-height: 3rem;
   }
     
@@ -156,10 +248,34 @@
     }
   }
 
+  @media only screen and (max-width: 450px) {
+    .header_area img {
+        height: 3rem;
+      }
+      .sudoku_grid{
+        width:90%;
+        margin-top: 2rem;
+      }
+    .sudoku_grid div {
+      font-size: 20px;
+      width: 11%;
+      height: 1.75rem;
+  }
+    
+
+    .Buttons button {
+      font-size: 12px; 
+      padding: 5px 5px;
+      margin-top: 1rem;
+      margin-bottom: 4rem;
+    }
+  } 
+
   
 
 
-    </style>
+</style>
+   
 </head>
 <body>
     <Section class="header_area">
