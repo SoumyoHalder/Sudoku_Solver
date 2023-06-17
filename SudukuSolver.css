@@ -39,7 +39,7 @@
     align-items: center;
     justify-content: center;
     width: 11%;
-    height: 6rem;
+    height: 5rem;
     color: white;
     font-size: 40px;
     box-sizing: border-box;
@@ -172,7 +172,7 @@
     
   @media only screen and (max-width: 1260px) {
     .header_area img {
-        height: 7rem;
+        height: 5rem;
       }
       .sudoku_grid{
 
@@ -183,12 +183,12 @@
     .sudoku_grid div {
       font-size: 20px;
       width: 11%;
-    height: 3rem;
+    height: 2.75rem;
   }
     
 
     .Buttons button {
-      font-size: 20px; 
+      font-size: 18px; 
       padding: 7px 10px;
     }
   }
