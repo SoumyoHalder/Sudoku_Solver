@@ -181,7 +181,7 @@
         margin: 7px auto;
       }
     .sudoku_grid div {
-      font-size: 20px;
+      font-size: 25px;
       width: 11%;
     height: 2.75rem;
   }
